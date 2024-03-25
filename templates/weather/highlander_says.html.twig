@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Highlander says</h1>
+    {% for forecast in forecasts %}
+        <p>{{ forecast }}</p>
+    {% endfor %}
+
+    {% if threshold %}<p>Threshold: {{ threshold }}.</p> {% endif %}
+
+    <nav>
+        <a href="{{ path('app_weather_highlandersays', {
+            threshold: 11
+        }) }}">try again</a>
+    </nav>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        const route = '{{ path('app_weather_highlandersays')|escape('js') }}'
+        console.log(route)
+    </script>
+
+{% endblock %}
+
+{% block title %} hiaoh{% endblock%}
